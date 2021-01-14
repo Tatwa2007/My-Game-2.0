@@ -98,6 +98,7 @@ if (gameState === "start") {
     
     player.visible = false;
    if (keyDown ("1")) {
+       console.log ("I'm working?")
        player.addImage (boyImg);
    }
 
