@@ -8,7 +8,7 @@ var gameState = "start";
 var backGround, bedroom, kitchen;
 var player;
 var blender, pan, mitt, glass, spatula;
-//var closedBook, laptop, openBook, remote;
+var closedBook, laptop, openBook, remote;
 var coin;
 //var kitchenButton;
 var score = 0 ;
@@ -42,6 +42,12 @@ function setup(){
     engine = Engine.create();
     world = engine.world;
 
+    bedroomSprites ();
+    closedBook.visible = false
+    laptop.visible = false
+    openBook.visible = false 
+    remote.visible = false
+    
     ground = new Ground(width/2, height,width,20);
     
    // ball1 = new ball (width/2, height-20, 100, PI/2)
@@ -118,20 +124,6 @@ if (gameState !== "start") {
 }
 if (gameState === "bedroom") {
     background(bedroomImg)
-
-
-    closedBook= createSprite (width-500, height/2+500,20,20);
-    closedBook.addImage (closedBookImg);
-    closedBook.scale = 2
-     laptop = createSprite (width/2-500, height/2+100,20,20);
-     laptop.addImage (laptopImg)
-     laptop.scale = 2
-      openBook= createSprite (width/5, height/2,20,20)
-      openBook.addImage (openBookImg)
-      openBook.scale = 2
-       remote= createSprite (width/3, height-200,20,20)
-       remote.addImage (remoteImg)
-       remote.scale = 2
 
        if (player.isTouching(closedBook) && mousePressedOver(closedBook)) {
         score = score+1;
@@ -226,39 +218,17 @@ drawSprites ();
 
 }
 
-/*function mouseDragged(){
-    Matter.Body.setPosition(ball1.body, {x: mouseX , y: mouseY});
-}*/
-
-/*
-function mouseReleased(){
-    slingshot.fly();
-    gameState = "launch";  
+function bedroomSprites () {
+     closedBook= createSprite (width-500, height/2+500,20,20);
+    closedBook.addImage (closedBookImg);
+    closedBook.scale = 2
+     laptop = createSprite (width/2-500, height/2+100,20,20);
+     laptop.addImage (laptopImg)
+     laptop.scale = 2
+      openBook= createSprite (width/5, height/2,20,20)
+      openBook.addImage (openBookImg)
+      openBook.scale = 2
+       remote= createSprite (width/3, height-200,20,20)
+       remote.addImage (remoteImg)
+       remote.scale = 2
 }
-
-function keyPressed(){
-    if(keyCode===32 && bird.body.speed<1){
-    bird.trajectory = [];
-    Matter.Body.setPosition(bird.body, {x:200, y:50})
-    bird.body.speed = 0;
-    slingshot.attach(bird.body);
-    }
-}
-
-async function getTime(){
-    console.log(T);
-    }
-
-   async function getBackgroundImg(){
-    var response = await fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata");
-    var responseJSON = await response.json();
-    var dateTime = responseJSON.datetime;
-    var T = dateTime.slice(11,13);
-
-    
-
-    backgroundImg = loadImage(bg);
-
-   }
-   */
-   
