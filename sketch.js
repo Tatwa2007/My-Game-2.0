@@ -125,6 +125,10 @@ if (gameState !== "start") {
 if (gameState === "bedroom") {
     background(bedroomImg)
 
+    closedBook.visible = true
+    laptop.visible = true
+    openBook.visible = true
+    remote.visible = true
        if (player.isTouching(closedBook) && mousePressedOver(closedBook)) {
         score = score+1;
         closedBook.destroy();
