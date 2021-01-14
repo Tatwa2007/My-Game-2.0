@@ -30,7 +30,7 @@ function preload () {
     closedBookImg = loadImage ("images/closedBook.gif");
     openBookImg = loadImage ("images/openBook.gif");
     laptopImg = loadImage ("images/laptop.gif");
-    remoteImg = loadImage ("images/remote.gif");
+    remoteImg = loadImage ("images/Remote.gif");
 
     
 }
@@ -47,6 +47,14 @@ function setup(){
     laptop.visible = false
     openBook.visible = false 
     remote.visible = false
+    
+    kitchenSprites();
+    spatula.visible = false
+    pan.visible = false
+    glass.visible = false 
+    blender.visible = false
+    mitt.visible = false
+    
     
     ground = new Ground(width/2, height,width,20);
     
@@ -165,8 +173,36 @@ if (gameState === "bedroom") {
 
 if (gameState === "kitchen") {
     background(kitchenImg);
+ spatula.visible = true
+    pan.visible = true
+    glass.visible = true 
+    blender.visible = true
+    mitt.visible = true
+}
 
-blender = createSprite (width/2, height/2,20,20)
+
+drawSprites ();
+
+}
+
+function bedroomSprites () {
+     closedBook= createSprite (width-500, height/2+500,20,20);
+    closedBook.addImage (closedBookImg);
+    closedBook.scale = 2
+     laptop = createSprite (width/2-500, height/2+100,20,20);
+     laptop.addImage (laptopImg)
+     laptop.scale = 2
+      openBook= createSprite (width/5, height/2,20,20)
+      openBook.addImage (openBookImg)
+      openBook.scale = 2
+       remote= createSprite (width/3, height-200,20,20)
+       remote.addImage (remoteImg)
+       remote.scale = 2
+}
+
+
+    kitchenSprites(){
+        blender = createSprite (width/2, height/2,20,20)
 blender.addImage (blenderImg)
 blender.scale = 2
 //blender.scale = 5
@@ -215,24 +251,5 @@ bedroomButton.mousePressed (()=>{
     gameState = "bedroom"
 })
 
-}
-
-
-drawSprites ();
-
-}
-
-function bedroomSprites () {
-     closedBook= createSprite (width-500, height/2+500,20,20);
-    closedBook.addImage (closedBookImg);
-    closedBook.scale = 2
-     laptop = createSprite (width/2-500, height/2+100,20,20);
-     laptop.addImage (laptopImg)
-     laptop.scale = 2
-      openBook= createSprite (width/5, height/2,20,20)
-      openBook.addImage (openBookImg)
-      openBook.scale = 2
-       remote= createSprite (width/3, height-200,20,20)
-       remote.addImage (remoteImg)
-       remote.scale = 2
-}
+    }
+   
